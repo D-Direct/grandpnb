@@ -1,0 +1,10 @@
+{
+  "description": "Explore multi-day travel itineraries and destination maps to plan and compare trips with clear visual guides.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
