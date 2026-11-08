@@ -1,15 +1,13 @@
 import { FormEvent, useEffect, useState } from "react";
-import tenNightTourImage from "@/imports/10_Night-11Days.jpeg";
-import fourteenNightTourImage from "@/imports/14_Night_-_15_Days.jpeg";
-import mapImage from "@/imports/map.jfif";
 
 const A = "/assets";
+const mapImage = `${A}/map.jfif`;
 
 type View = "home" | "tour" | "confirmation";
 
 const scenes = [
   {
-    image: `${A}/487f0.png`,
+    image: `${A}/hero/487f0.png`,
     label: "Tea country",
     location: "Haputale · The tea highlands",
     title: (
@@ -20,7 +18,7 @@ const scenes = [
     ),
   },
   {
-    image: `${A}/ca2ea.png`,
+    image: `${A}/hero/ca2ea.png`,
     label: "Ancient heritage",
     location: "Sigiriya · The cultural heart",
     title: (
@@ -31,7 +29,7 @@ const scenes = [
     ),
   },
   {
-    image: `${A}/fad68.png`,
+    image: `${A}/hero/fad68.png`,
     label: "Golden beaches",
     location: "Mirissa · The southern coast",
     title: (
@@ -43,7 +41,7 @@ const scenes = [
     ),
   },
   {
-    image: `${A}/bab8a.png`,
+    image: `${A}/lasting-memories/bab8a.png`,
     label: "Wildlife safari",
     location: "Udawalawe · Into the wild",
     title: (
@@ -55,7 +53,7 @@ const scenes = [
     ),
   },
   {
-    image: `${A}/344e2.png`,
+    image: `${A}/hero/344e2.png`,
     label: "Misty mountains",
     location: "Ella · The misty highlands",
     title: (
@@ -73,45 +71,45 @@ const tours = [
     "5 Nights / 6 Days",
     "Ceylon Flash",
     "A compact Sri Lankan escape, with time for discovery and a change of pace.",
-    `${A}/726f4.png`,
+    `${A}/packages/726f4.png`,
   ],
   [
     "6 Nights / 7 Days",
     "A Week Discover in Sri Lanka",
     "Ancient kingdoms, highland tea trails and wild elephants, ending by the ocean.",
-    `${A}/427af.png`,
+    `${A}/packages/427af.png`,
   ],
   [
     "8 Nights / 9 Days",
     "Leisure Sri Lanka",
     "Let the days unfold with room for island culture, nature and coastal calm.",
-    `${A}/8d8b2.png`,
+    `${A}/packages/8d8b2.png`,
   ],
   [
     "10 Nights / 11 Days",
     "Sri Lanka at Leisure",
     "Sacred cities and tea-covered hills, with unhurried days on the southern coast.",
-    tenNightTourImage,
+    `${A}/packages/10_Night-11Days.jpeg`,
   ],
   [
     "14 Nights / 15 Days",
     "Discover Sri Lanka",
     "Stay a little longer. Discover the island’s rich heritage, natural beauty and changing landscapes.",
-    fourteenNightTourImage,
+    `${A}/packages/14_Night_-_15_Days.jpeg`,
   ],
 ];
 
 const guestPhotos = [
-  "23619.png",
-  "e591e.png",
-  "cc8f1.png",
-  "64776.png",
-  "d2502.png",
-  "8428e.png",
-  "c6376.png",
-  "65b5d.png",
-  "a8e63.png",
-  "f4a0b.png",
+  "our-guests/23619.png",
+  "our-guests/e591e.png",
+  "our-guests/cc8f1.png",
+  "our-guests/64776.png",
+  "our-guests/d2502.png",
+  "our-guests/8428e.png",
+  "our-guests/c6376.png",
+  "our-guests/65b5d.png",
+  "our-guests/a8e63.png",
+  "our-guests/f4a0b.png",
 ];
 
 const days = [
@@ -163,7 +161,7 @@ function Logo({ light = false }: { light?: boolean }) {
   return (
     <div className="brand">
       <div className="logo-crop">
-        <img src={`${A}/8b9bd.png`} alt="Grand P & B" />
+        <img src={`${A}/packages/8b9bd.png`} alt="Grand P & B" />
       </div>
       <div>
         <strong className={light ? "light" : ""}>GRAND P & B</strong>
@@ -564,7 +562,7 @@ function Home({ onView }: { onView: (v: View) => void }) {
           <img
             src={mapImage}
             alt="Nine Arch Bridge in Ella"
-            style={{ height: "540px", opacity: 0.7 }}
+            style={{ height: "540px", opacity: 0.7, objectFit: "contain" }}
           />
           <div>
             <span>NINE ARCH BRIDGE, ELLA</span>
@@ -604,10 +602,10 @@ function Home({ onView }: { onView: (v: View) => void }) {
         </div>
         <div className="gallery">
           {[
-            ["726f4.png", "01 / Ancient wonders"],
-            ["427af.png", "02 / Highland journeys"],
-            ["8d8b2.png", "03 / Ocean days"],
-            ["60591.png", "04 / Tea country mornings"],
+            ["packages/726f4.png", "01 / Ancient wonders"],
+            ["packages/427af.png", "02 / Highland journeys"],
+            ["packages/8d8b2.png", "03 / Ocean days"],
+            ["lasting-memories/60591.png", "04 / Tea country mornings"],
           ].map(([img, label]) => (
             <figure key={label}>
               <img src={`${A}/${img}`} alt="" />
@@ -784,7 +782,7 @@ function Tour({ onView }: { onView: (v: View) => void }) {
             <span>grandpnb@mail.com</span>
           </div>
           <figure className="sidebar-photo">
-            <img src={`${A}/8d8b2.png`} alt="" />
+            <img src={`${A}/packages/8d8b2.png`} alt="" />
             <figcaption>End with a little ocean air.</figcaption>
           </figure>
         </aside>
@@ -809,7 +807,7 @@ function Confirmation({ onView }: { onView: (v: View) => void }) {
       <div className="notice">ⓘ &nbsp; DESIGN PREVIEW · NO REQUEST SENT</div>
       <div className="confirm-brand">
         <div className="logo-crop">
-          <img src={`${A}/8b9bd.png`} alt="" />
+          <img src={`${A}/packages/8b9bd.png`} alt="" />
         </div>
         <span>Grand P & B</span>
       </div>
@@ -848,7 +846,44 @@ export default function App() {
     setView(v);
     if (v !== "confirmation") window.scrollTo({ top: 0, behavior: "smooth" });
   };
-  if (view === "tour") return <Tour onView={go} />;
-  if (view === "confirmation") return <Confirmation onView={go} />;
-  return <Home onView={go} />;
+  const page =
+    view === "tour" ? (
+      <Tour onView={go} />
+    ) : view === "confirmation" ? (
+      <Confirmation onView={go} />
+    ) : (
+      <Home onView={go} />
+    );
+  const whatsappUrl =
+    "https://wa.me/94717368412?text=" +
+    encodeURIComponent("Hello Grand P & B! I’m interested in planning a trip to Sri Lanka.");
+
+  return (
+    <>
+      {page}
+      <a
+        className="whatsapp-float"
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat with Grand P & B on WhatsApp"
+      >
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <path
+            d="M16 3.5a12 12 0 0 0-10.3 18.2L4 28l6.5-1.7A12 12 0 1 0 16 3.5Z"
+            fill="none"
+            stroke="currentColor"
+            strokeLinejoin="round"
+            strokeWidth="2"
+          />
+          <path
+            d="M12.1 10.4c-.4-.8-.8-.8-1.2-.8h-1c-.4 0-.9.2-1.2.7-.4.5-1.6 1.5-1.6 3.8s1.6 4.5 1.9 4.8c.2.3 3.1 5 7.7 6.8 3.8 1.5 4.6 1.2 5.4 1.1.8-.1 2.6-1.1 3-2.1.4-1 .4-1.9.3-2.1-.1-.2-.4-.3-.8-.5l-2.8-1.3c-.4-.2-.7-.2-1 .2-.3.4-1.1 1.3-1.4 1.6-.3.3-.5.3-.9.1-.4-.2-1.7-.6-3.3-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.3 0-.5 0-.7l-1.3-3Z"
+            fill="currentColor"
+            transform="translate(2 0) scale(.86)"
+          />
+        </svg>
+        <span>Chat with us</span>
+      </a>
+    </>
+  );
 }

@@ -808,12 +808,45 @@ footer {
 .breadcrumb span {
   color: var(--green);
 }
+.whatsapp-float {
+  position: fixed;
+  right: max(24px, env(safe-area-inset-right));
+  bottom: max(24px, env(safe-area-inset-bottom));
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px 14px 16px;
+  border-radius: 999px;
+  background: #25d366;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+.whatsapp-float:hover {
+  background: #1fbd5b;
+  transform: translateY(-2px);
+}
+.whatsapp-float:focus-visible {
+  outline: 3px solid #17382f;
+  outline-offset: 3px;
+}
+.whatsapp-float svg {
+  width: 25px;
+  height: 25px;
+  flex: none;
+}
 .tour-hero {
   height: 480px;
   padding: 62px clamp(24px, 5.55vw, 80px) 48px;
   background:
     linear-gradient(90deg, rgba(8, 45, 34, 0.87), rgba(11, 47, 35, 0.19)),
-    url("/assets/e7f21.png") center/cover;
+    url("/assets/hero/e7f21.png") center/cover;
   color: #fff;
   display: flex;
   align-items: flex-end;
