@@ -602,9 +602,9 @@ function Home({ onView }: { onView: (v: View) => void }) {
         </div>
         <div className="gallery">
           {[
-            ["packages/5N6D.webp", "01 / Ancient wonders"],
-            ["packages/6N7D.webp", "02 / Highland journeys"],
-            ["packages/8N9D.webp", "03 / Ocean days"],
+            ["lasting-memories/ancient.jpg", "01 / Ancient wonders"],
+            ["lasting-memories/waterfall.jpg", "02 / Highland journeys"],
+            ["lasting-memories/beach.jpg", "03 / Ocean days"],
             ["lasting-memories/60591.png", "04 / Tea country mornings"],
           ].map(([img, label]) => (
             <figure key={label}>
