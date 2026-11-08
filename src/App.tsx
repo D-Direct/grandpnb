@@ -1,7 +1,7 @@
 import { FormEvent, useEffect, useState } from "react";
 
 const A = `${import.meta.env.BASE_URL}assets`;
-const mapImage = `${A}/map.jfif`;
+const mapImage = `${A}/welcome.jpg`;
 
 type View = "home" | "tour" | "confirmation";
 
