@@ -1,7 +1,7 @@
 import { FormEvent, useEffect, useState } from "react";
 
 const A = `${import.meta.env.BASE_URL}assets`;
-const mapImage = `${A}/map.webp`;
+const mapImage = `${A}/map.jfif`;
 
 type View = "home" | "tour" | "confirmation";
 
@@ -41,7 +41,7 @@ const scenes = [
     ),
   },
   {
-    image: `${A}/lasting-memories/bab8a.webp`,
+    image: `${A}/lasting-memories/bab8a.png`,
     label: "Wildlife safari",
     location: "Udawalawe · Into the wild",
     title: (
@@ -71,45 +71,45 @@ const tours = [
     "5 Nights / 6 Days",
     "Ceylon Flash",
     "A compact Sri Lankan escape, with time for discovery and a change of pace.",
-    `${A}/packages/726f4.webp`,
+    `${A}/packages/5N6D.webp`,
   ],
   [
     "6 Nights / 7 Days",
     "A Week Discover in Sri Lanka",
     "Ancient kingdoms, highland tea trails and wild elephants, ending by the ocean.",
-    `${A}/packages/427af.webp`,
+    `${A}/packages/6N7D.webp`,
   ],
   [
     "8 Nights / 9 Days",
     "Leisure Sri Lanka",
     "Let the days unfold with room for island culture, nature and coastal calm.",
-    `${A}/packages/8d8b2.webp`,
+    `${A}/packages/8N9D.webp`,
   ],
   [
     "10 Nights / 11 Days",
     "Sri Lanka at Leisure",
     "Sacred cities and tea-covered hills, with unhurried days on the southern coast.",
-    `${A}/packages/10_Night-11Days.webp`,
+    `${A}/packages/10N11D.webp`,
   ],
   [
     "14 Nights / 15 Days",
     "Discover Sri Lanka",
     "Stay a little longer. Discover the island's rich heritage, natural beauty and changing landscapes.",
-    `${A}/packages/14_Night_-_15_Days.webp`,
+    `${A}/packages/14N15D.webp`,
   ],
 ];
 
 const guestPhotos = [
-  "our-guests/23619.webp",
-  "our-guests/e591e.webp",
-  "our-guests/cc8f1.webp",
-  "our-guests/64776.webp",
-  "our-guests/d2502.webp",
-  "our-guests/8428e.webp",
-  "our-guests/c6376.webp",
-  "our-guests/65b5d.webp",
-  "our-guests/a8e63.webp",
-  "our-guests/f4a0b.webp",
+  "our-guests/23619.png",
+  "our-guests/e591e.png",
+  "our-guests/cc8f1.png",
+  "our-guests/64776.png",
+  "our-guests/d2502.png",
+  "our-guests/8428e.png",
+  "our-guests/c6376.png",
+  "our-guests/65b5d.png",
+  "our-guests/a8e63.png",
+  "our-guests/f4a0b.png",
 ];
 
 const days = [
@@ -161,7 +161,7 @@ function Logo({ light = false }: { light?: boolean }) {
   return (
     <div className="brand">
       <div className="logo-crop">
-        <img src={`${A}/packages/8b9bd.webp`} alt="Grand P & B" />
+        <img src={`${A}/logo.jpeg`} alt="Grand P & B" />
       </div>
       <div>
         <strong className={light ? "light" : ""}>GRAND P & B</strong>
@@ -602,10 +602,10 @@ function Home({ onView }: { onView: (v: View) => void }) {
         </div>
         <div className="gallery">
           {[
-            ["packages/726f4.webp", "01 / Ancient wonders"],
-            ["packages/427af.webp", "02 / Highland journeys"],
-            ["packages/8d8b2.webp", "03 / Ocean days"],
-            ["lasting-memories/60591.webp", "04 / Tea country mornings"],
+            ["packages/5N6D.webp", "01 / Ancient wonders"],
+            ["packages/6N7D.webp", "02 / Highland journeys"],
+            ["packages/8N9D.webp", "03 / Ocean days"],
+            ["lasting-memories/60591.png", "04 / Tea country mornings"],
           ].map(([img, label]) => (
             <figure key={label}>
               <img src={`${A}/${img}`} alt="" />
@@ -782,7 +782,7 @@ function Tour({ onView }: { onView: (v: View) => void }) {
             <span>grandpnb@mail.com</span>
           </div>
           <figure className="sidebar-photo">
-            <img src={`${A}/packages/8d8b2.webp`} alt="" />
+            <img src={`${A}/packages/8N9D.webp`} alt="" />
             <figcaption>End with a little ocean air.</figcaption>
           </figure>
         </aside>
@@ -807,7 +807,7 @@ function Confirmation({ onView }: { onView: (v: View) => void }) {
       <div className="notice">ⓘ &nbsp; DESIGN PREVIEW · NO REQUEST SENT</div>
       <div className="confirm-brand">
         <div className="logo-crop">
-          <img src={`${A}/packages/8b9bd.webp`} alt="" />
+          <img src={`${A}/logo.jpeg`} alt="" />
         </div>
         <span>Grand P & B</span>
       </div>
