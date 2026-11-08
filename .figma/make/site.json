@@ -1,7 +1,8 @@
 {
-  "description": "Explore multi-day travel itineraries and destination maps to plan and compare trips with clear visual guides.",
+  "title": "Grand P & B - Sri Lanka Travel | Personalized Tours & Itineraries",
+  "description": "Discover Sri Lanka with Grand P & B. From tea-covered hills to the Indian Ocean, explore personalized tour packages and meaningful journeys shaped around you.",
   "robots": {
-    "index": false
+    "index": true
   },
   "accessibility": {
     "addBypassLinks": false,
