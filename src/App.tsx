@@ -1,7 +1,7 @@
 import { FormEvent, useEffect, useState } from "react";
 
 const A = `${import.meta.env.BASE_URL}assets`;
-const mapImage = `${A}/welcome.jpg`;
+const mapImage = `${A}/welcome.webp`;
 
 type View = "home" | "tour" | "confirmation";
 
@@ -41,7 +41,7 @@ const scenes = [
     ),
   },
   {
-    image: `${A}/lasting-memories/bab8a.png`,
+    image: `${A}/lasting-memories/bab8a.webp`,
     label: "Wildlife safari",
     location: "Udawalawe · Into the wild",
     title: (
@@ -100,16 +100,16 @@ const tours = [
 ];
 
 const guestPhotos = [
-  "our-guests/23619.png",
-  "our-guests/e591e.png",
-  "our-guests/cc8f1.png",
-  "our-guests/64776.png",
-  "our-guests/d2502.png",
-  "our-guests/8428e.png",
-  "our-guests/c6376.png",
-  "our-guests/65b5d.png",
-  "our-guests/a8e63.png",
-  "our-guests/f4a0b.png",
+  "our-guests/23619.webp",
+  "our-guests/e591e.webp",
+  "our-guests/cc8f1.webp",
+  "our-guests/64776.webp",
+  "our-guests/d2502.webp",
+  "our-guests/8428e.webp",
+  "our-guests/c6376.webp",
+  "our-guests/65b5d.webp",
+  "our-guests/a8e63.webp",
+  "our-guests/f4a0b.webp",
 ];
 
 const days = [
@@ -161,7 +161,7 @@ function Logo({ light = false }: { light?: boolean }) {
   return (
     <div className="brand">
       <div className="logo-crop">
-        <img src={`${A}/logo.jpeg`} alt="Grand P & B" />
+        <img src={`${A}/logo/logo_transparent.webp`} alt="Grand P & B" />
       </div>
       <div>
         <strong className={light ? "light" : ""}>GRAND P & B</strong>
@@ -176,7 +176,19 @@ function Arrow() {
 }
 
 function Header({ onView, current }: { onView: (v: View) => void; current: View }) {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const scroll = (id: string) => {
+    setMenuOpen(false);
     if (current !== "home") {
       onView("home");
       window.setTimeout(
@@ -185,21 +197,43 @@ function Header({ onView, current }: { onView: (v: View) => void; current: View 
       );
     } else document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const goHome = () => {
+    setMenuOpen(false);
+    onView("home");
+  };
+
   return (
-    <header className="header">
-      <button className="brand-button" onClick={() => onView("home")} aria-label="Grand P & B home">
-        <Logo />
-      </button>
-      <nav>
-        <button onClick={() => onView("home")}>Home</button>
+    <>
+      <header className={`header ${scrolled ? "scrolled" : ""}`}>
+        <button className="brand-button" onClick={goHome} aria-label="Grand P & B home">
+          <Logo />
+        </button>
+        <nav>
+          <button onClick={goHome}>Home</button>
+          <button onClick={() => scroll("tours")}>Tour Packages</button>
+          <button onClick={() => scroll("story")}>Our Story</button>
+          <button onClick={() => scroll("inquiry")}>Contact</button>
+          <button className="button dark" onClick={() => scroll("inquiry")}>
+            Plan your journey <Arrow />
+          </button>
+        </nav>
+        <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </header>
+      <div className={`mobile-menu ${menuOpen ? "open" : ""}`}>
+        <button onClick={goHome}>Home</button>
         <button onClick={() => scroll("tours")}>Tour Packages</button>
         <button onClick={() => scroll("story")}>Our Story</button>
         <button onClick={() => scroll("inquiry")}>Contact</button>
         <button className="button dark" onClick={() => scroll("inquiry")}>
           Plan your journey <Arrow />
         </button>
-      </nav>
-    </header>
+      </div>
+    </>
   );
 }
 
@@ -296,7 +330,7 @@ function Footer({ onView }: { onView: (v: View) => void }) {
           <b>GET IN TOUCH</b>
           <p>No 205/3, Polgaha-anga, Weligalla</p>
           <p>
-            Mobile +94 71 736 8412
+            Mobile +94 71 636 8412
             <br />
             +94 71 636 8412
           </p>
@@ -602,10 +636,10 @@ function Home({ onView }: { onView: (v: View) => void }) {
         </div>
         <div className="gallery">
           {[
-            ["lasting-memories/ancient.jpg", "01 / Ancient wonders"],
-            ["lasting-memories/waterfall.jpg", "02 / Highland journeys"],
-            ["lasting-memories/beach.jpg", "03 / Ocean days"],
-            ["lasting-memories/60591.png", "04 / Tea country mornings"],
+            ["lasting-memories/ancient.webp", "01 / Ancient wonders"],
+            ["lasting-memories/waterfall.webp", "02 / Highland journeys"],
+            ["lasting-memories/beach.webp", "03 / Ocean days"],
+            ["lasting-memories/60591.webp", "04 / Tea country mornings"],
           ].map(([img, label]) => (
             <figure key={label}>
               <img src={`${A}/${img}`} alt="" />
@@ -645,7 +679,7 @@ function Home({ onView }: { onView: (v: View) => void }) {
           </ol>
           <hr />
           <small>Prefer a conversation?</small>
-          <b>+94 71 736 8412</b>
+          <b>+94 71 636 8412</b>
           <a href="mailto:grandpnb@mail.com">grandpnb@mail.com</a>
         </div>
         <InquiryForm onComplete={() => onView("confirmation")} />
@@ -775,10 +809,10 @@ function Tour({ onView }: { onView: (v: View) => void }) {
           <div className="contact-card">
             <h3>Have something in mind?</h3>
             <p>
-              Tell us your travel dates, accommodation preference and interests. Let’s talk through
+              Tell us your travel dates, accommodation preference and interests. Let's talk through
               the details.
             </p>
-            <b>+94 71 736 8412</b>
+            <b>+94 71 636 8412</b>
             <span>grandpnb@mail.com</span>
           </div>
           <figure className="sidebar-photo">
@@ -807,7 +841,7 @@ function Confirmation({ onView }: { onView: (v: View) => void }) {
       <div className="notice">ⓘ &nbsp; DESIGN PREVIEW · NO REQUEST SENT</div>
       <div className="confirm-brand">
         <div className="logo-crop">
-          <img src={`${A}/logo.jpeg`} alt="" />
+          <img src={`${A}/logo/logo_transparent.webp`} alt="" />
         </div>
         <span>Grand P & B</span>
       </div>
@@ -855,8 +889,8 @@ export default function App() {
       <Home onView={go} />
     );
   const whatsappUrl =
-    "https://wa.me/94717368412?text=" +
-    encodeURIComponent("Hello Grand P & B! I’m interested in planning a trip to Sri Lanka.");
+    "https://wa.me/94716368412?text=" +
+    encodeURIComponent("Hello Grand P & B! I'm interested in planning a trip to Sri Lanka.");
 
   return (
     <>

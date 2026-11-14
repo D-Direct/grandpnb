@@ -1,0 +1,9 @@
+# robots.txt for Grand P & B
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://grandpnb.com/sitemap.xml
+
+# Crawl-delay (optional, helps with server load)
+Crawl-delay: 1
