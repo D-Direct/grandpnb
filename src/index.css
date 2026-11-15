@@ -1,41 +1,12 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "Cormorant Garamond:Italic";
-  src: url("https://static.figma.com/font/CormorantGaramond-Italic_wght__1") format("woff2");
-  font-style: italic;
-  font-weight: 400;
-}
-@font-face {
-  font-family: "Cormorant Garamond:Medium";
-  src: url("https://static.figma.com/font/CormorantGaramond_wght__1") format("woff2");
-  font-style: normal;
-  font-weight: 500;
-}
-@font-face {
-  font-family: "Cormorant Garamond:Regular";
-  src: url("https://static.figma.com/font/CormorantGaramond_wght__1") format("woff2");
-  font-style: normal;
-  font-weight: 400;
-}
-@font-face {
-  font-family: "DM Sans:Medium";
-  src: url("https://static.figma.com/font/DMSans_opsz_wght__1") format("woff2");
-  font-style: normal;
-  font-weight: 500;
-}
-@font-face {
-  font-family: "DM Sans:Regular";
-  src: url("https://static.figma.com/font/DMSans_opsz_wght__1") format("woff2");
-  font-style: normal;
-  font-weight: 400;
-}
-@font-face {
-  font-family: "DM Sans:SemiBold";
-  src: url("https://static.figma.com/font/DMSans_opsz_wght__1") format("woff2");
-  font-style: normal;
-  font-weight: 600;
-}
+/* Self-hosted fonts via @fontsource - latin subset only */
+@import "@fontsource/cormorant-garamond/latin-400.css";
+@import "@fontsource/cormorant-garamond/latin-400-italic.css";
+@import "@fontsource/cormorant-garamond/latin-500.css";
+@import "@fontsource/dm-sans/latin-400.css";
+@import "@fontsource/dm-sans/latin-500.css";
+@import "@fontsource/dm-sans/latin-600.css";
 
 :root {
   --green: #124c3c;
@@ -53,7 +24,8 @@
     margin: 0;
     color: var(--ink);
     background: #fff;
-    font-family: "DM Sans:Regular", sans-serif;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 400;
     font-variation-settings: "opsz" 14;
   }
   button,
@@ -79,9 +51,29 @@
   h1,
   h2,
   h3 {
-    font-family: "Cormorant Garamond:Medium", serif;
+    font-family: "Cormorant Garamond", serif;
     font-weight: 500;
   }
+}
+
+/* Accessibility: Skip to main content link */
+.skip-to-main {
+  position: fixed;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  background: var(--green);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font: 600 14px "DM Sans";
+  text-decoration: none;
+  transition: top 0.3s ease;
+}
+
+.skip-to-main:focus {
+  top: 20px;
 }
 .header {
   height: 96px;
@@ -104,18 +96,21 @@
 }
 .header:not(.scrolled) .brand strong {
   color: #fff;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  font-size: 19px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 .header:not(.scrolled) .brand span {
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 .header:not(.scrolled) .logo-crop {
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.6));
 }
 .header:not(.scrolled) nav > button:not(.button) {
   color: #fff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  font-weight: 500;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 .brand-button {
   border: 0;
@@ -134,7 +129,7 @@
   white-space: nowrap;
 }
 .brand strong {
-  font: 600 18px "DM Sans:SemiBold";
+  font: 600 18px "DM Sans";
   letter-spacing: 2px;
 }
 .brand span {
@@ -214,7 +209,7 @@
   font-size: 24px;
   color: var(--green);
   text-align: left;
-  font-family: "Cormorant Garamond:Medium", serif;
+  font-family: "Cormorant Garamond", serif;
   font-weight: 500;
 }
 .mobile-menu .button {
@@ -230,7 +225,7 @@
   justify-content: center;
   gap: 24px;
   border: 1px solid transparent;
-  font: 600 14px "DM Sans:SemiBold";
+  font: 600 14px "DM Sans";
   white-space: nowrap;
 }
 .button.dark {
@@ -272,7 +267,7 @@
   margin-top: auto;
 }
 .eyebrow {
-  font: 600 11px "DM Sans:SemiBold";
+  font: 600 11px "DM Sans";
   color: var(--green);
   letter-spacing: 2.3px;
   text-transform: uppercase;
@@ -362,7 +357,7 @@
   background: var(--cream);
 }
 .promises h3 {
-  font: 400 27px "Cormorant Garamond:Regular";
+  font: 400 27px "Cormorant Garamond";
 }
 .promises span {
   font-size: 13px;
@@ -414,7 +409,7 @@
   gap: 12px;
 }
 .tour-card b {
-  font: 500 12px "DM Sans:Medium";
+  font: 500 12px "DM Sans";
   color: var(--green);
 }
 .tour-card h3 {
@@ -436,7 +431,7 @@
   display: flex;
   justify-content: space-between;
   color: var(--green);
-  font: 600 12px "DM Sans:SemiBold";
+  font: 600 12px "DM Sans";
   margin-top: auto;
 }
 .tour-card button img {
@@ -486,7 +481,7 @@
   color: var(--muted);
 }
 .story-image em {
-  font: italic 19px "Cormorant Garamond:Italic";
+  font: italic 19px "Cormorant Garamond";
   color: var(--green);
   letter-spacing: 0;
 }
@@ -503,7 +498,7 @@
 }
 .story a {
   color: var(--green);
-  font: 600 13px "DM Sans:SemiBold";
+  font: 600 13px "DM Sans";
   text-decoration: none;
 }
 .guest-stories {
@@ -580,10 +575,10 @@
 }
 .guest-counter span {
   color: #fff;
-  font: 400 38px "Cormorant Garamond:Regular";
+  font: 400 38px "Cormorant Garamond";
 }
 .guest-quote {
-  font: 400 31px/1.16 "Cormorant Garamond:Regular";
+  font: 400 31px/1.16 "Cormorant Garamond";
   margin-top: auto;
   margin-bottom: 30px;
 }
@@ -668,12 +663,12 @@ blockquote {
   column-gap: 60px;
 }
 blockquote span {
-  font: 600 11px "DM Sans:SemiBold";
+  font: 600 11px "DM Sans";
   color: var(--green);
   letter-spacing: 2.3px;
 }
 blockquote p {
-  font: 400 32px/1.18 "Cormorant Garamond:Regular";
+  font: 400 32px/1.18 "Cormorant Garamond";
 }
 blockquote small {
   grid-column: 2;
@@ -716,7 +711,7 @@ blockquote small {
 }
 .inquiry-copy li:before {
   content: "0" counter(steps);
-  font: 400 25px "Cormorant Garamond:Regular";
+  font: 400 25px "Cormorant Garamond";
   color: var(--gold);
   margin-right: 15px;
 }
@@ -729,7 +724,7 @@ blockquote small {
   color: var(--muted);
 }
 .inquiry-copy > b {
-  font: 500 19px "DM Sans:Medium";
+  font: 500 19px "DM Sans";
   color: var(--green);
 }
 .inquiry-copy > a {
@@ -751,7 +746,7 @@ blockquote small {
   justify-content: space-between;
 }
 .form-title h3 {
-  font: 400 30px "Cormorant Garamond:Regular";
+  font: 400 30px "Cormorant Garamond";
 }
 .form-title span {
   font-size: 10px;
@@ -764,7 +759,7 @@ blockquote small {
 }
 .inquiry-form label,
 .inquiry-form legend {
-  font: 500 11px "DM Sans:Medium";
+  font: 500 11px "DM Sans";
 }
 .inquiry-form input:not([type="checkbox"]),
 .inquiry-form select,
@@ -778,7 +773,7 @@ blockquote small {
   padding: 12px 14px;
   color: var(--ink);
   background: #fff;
-  font: 400 12px "DM Sans:Regular";
+  font: 400 12px "DM Sans";
 }
 .inquiry-form textarea {
   height: 92px;
@@ -811,7 +806,7 @@ blockquote small {
   display: flex;
   gap: 10px;
   align-items: start;
-  font-family: "DM Sans:Regular" !important;
+  font-family: "DM Sans" !important;
   font-weight: 400 !important;
   color: var(--muted);
 }
@@ -847,7 +842,7 @@ footer {
   line-height: 1.7;
 }
 .footer-grid b {
-  font: 600 11px "DM Sans:SemiBold";
+  font: 600 11px "DM Sans";
   letter-spacing: 2.3px;
   color: #e6eadc;
 }
@@ -926,7 +921,7 @@ footer {
   padding: 62px clamp(24px, 5.55vw, 80px) 48px;
   background:
     linear-gradient(90deg, rgba(8, 45, 34, 0.87), rgba(11, 47, 35, 0.19)),
-    url("/assets/hero/e7f21.png") center/cover;
+    url("/assets/hero/tour-hero-highlands.webp") center/cover;
   color: #fff;
   display: flex;
   align-items: flex-end;
@@ -949,7 +944,7 @@ footer {
   max-width: 580px;
 }
 .tour-hero > b {
-  font: 600 14px "DM Sans:SemiBold";
+  font: 600 14px "DM Sans";
 }
 .tour-hero > span {
   font-size: 12px;
@@ -1004,7 +999,7 @@ footer {
   display: block;
 }
 .day > div:first-child b {
-  font: 400 36px "Cormorant Garamond:Regular";
+  font: 400 36px "Cormorant Garamond";
   color: var(--green);
 }
 .day > div:last-child {
@@ -1039,12 +1034,12 @@ footer {
   color: var(--muted);
 }
 .day aside b {
-  font: 600 10px "DM Sans:SemiBold";
+  font: 600 10px "DM Sans";
   color: #a9684b;
   margin-right: 10px;
 }
 .day strong {
-  font: 500 11px "DM Sans:Medium";
+  font: 500 11px "DM Sans";
   color: var(--green);
 }
 .sidebar {
@@ -1062,7 +1057,7 @@ footer {
   gap: 22px;
 }
 .week-card h3 {
-  font: 400 38px "Cormorant Garamond:Regular";
+  font: 400 38px "Cormorant Garamond";
 }
 .week-card > p:not(.eyebrow) {
   font-size: 13px;
@@ -1087,7 +1082,7 @@ footer {
 }
 .included h3,
 .contact-card h3 {
-  font: 400 30px "Cormorant Garamond:Regular";
+  font: 400 30px "Cormorant Garamond";
   margin-bottom: 6px;
 }
 .included p {
@@ -1117,7 +1112,7 @@ footer {
   object-fit: cover;
 }
 .sidebar-photo figcaption {
-  font: italic 23px "Cormorant Garamond:Italic";
+  font: italic 23px "Cormorant Garamond";
   color: var(--green);
   margin-top: 12px;
 }
@@ -1146,7 +1141,7 @@ footer {
   width: 100%;
   padding: 14px 16px;
   background: #eaf0eb;
-  font: 600 10px "DM Sans:SemiBold";
+  font: 600 10px "DM Sans";
   letter-spacing: 1.4px;
   color: var(--green);
 }
@@ -1154,7 +1149,7 @@ footer {
   display: flex;
   align-items: center;
   gap: 12px;
-  font: 400 27px "Cormorant Garamond:Regular";
+  font: 400 27px "Cormorant Garamond";
 }
 .confirm-brand .logo-crop {
   width: 48px;

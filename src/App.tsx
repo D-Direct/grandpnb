@@ -7,7 +7,7 @@ type View = "home" | "tour" | "confirmation";
 
 const scenes = [
   {
-    image: `${A}/hero/487f0.webp`,
+    image: `${A}/hero/tea-country-haputale.webp`,
     label: "Tea country",
     location: "Haputale · The tea highlands",
     title: (
@@ -18,7 +18,7 @@ const scenes = [
     ),
   },
   {
-    image: `${A}/hero/ca2ea.webp`,
+    image: `${A}/hero/ancient-heritage-sigiriya.webp`,
     label: "Ancient heritage",
     location: "Sigiriya · The cultural heart",
     title: (
@@ -29,7 +29,7 @@ const scenes = [
     ),
   },
   {
-    image: `${A}/hero/fad68.webp`,
+    image: `${A}/hero/golden-beaches-mirissa.webp`,
     label: "Golden beaches",
     location: "Mirissa · The southern coast",
     title: (
@@ -41,7 +41,7 @@ const scenes = [
     ),
   },
   {
-    image: `${A}/lasting-memories/bab8a.webp`,
+    image: `${A}/lasting-memories/wildlife-safari-udawalawe.webp`,
     label: "Wildlife safari",
     location: "Udawalawe · Into the wild",
     title: (
@@ -53,7 +53,7 @@ const scenes = [
     ),
   },
   {
-    image: `${A}/hero/344e2.webp`,
+    image: `${A}/hero/misty-mountains-ella.webp`,
     label: "Misty mountains",
     location: "Ella · The misty highlands",
     title: (
@@ -165,17 +165,32 @@ function Logo({ light = false }: { light?: boolean }) {
       </div>
       <div>
         <strong className={light ? "light" : ""}>GRAND P & B</strong>
-        <span className={light ? "light muted-light" : ""}>SRI LANKA, PERSONALLY</span>
+        <span className={light ? "light muted-light" : ""}>
+          SRI LANKA, PERSONALLY
+        </span>
       </div>
     </div>
   );
 }
 
 function Arrow() {
-  return <img className="arrow-icon" src={`${A}/96ef4.svg`} alt="" />;
+  return (
+    <img
+      className="arrow-icon"
+      src={`${A}/arrow-icon.svg`}
+      alt=""
+      aria-hidden="true"
+    />
+  );
 }
 
-function Header({ onView, current }: { onView: (v: View) => void; current: View }) {
+function Header({
+  onView,
+  current,
+}: {
+  onView: (v: View) => void;
+  current: View;
+}) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -192,7 +207,8 @@ function Header({ onView, current }: { onView: (v: View) => void; current: View 
     if (current !== "home") {
       onView("home");
       window.setTimeout(
-        () => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }),
+        () =>
+          document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }),
         50,
       );
     } else document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -206,7 +222,11 @@ function Header({ onView, current }: { onView: (v: View) => void; current: View 
   return (
     <>
       <header className={`header ${scrolled ? "scrolled" : ""}`}>
-        <button className="brand-button" onClick={goHome} aria-label="Grand P & B home">
+        <button
+          className="brand-button"
+          onClick={goHome}
+          aria-label="Grand P & B home"
+        >
           <Logo />
         </button>
         <nav>
@@ -218,7 +238,11 @@ function Header({ onView, current }: { onView: (v: View) => void; current: View 
             Plan your journey <Arrow />
           </button>
         </nav>
-        <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+        <button
+          className="hamburger"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Menu"
+        >
           <span></span>
           <span></span>
           <span></span>
@@ -242,7 +266,10 @@ function Hero({ onTour }: { onTour: () => void }) {
   const [playing, setPlaying] = useState(true);
   useEffect(() => {
     if (!playing) return;
-    const timer = window.setInterval(() => setScene((n) => (n + 1) % scenes.length), 6500);
+    const timer = window.setInterval(
+      () => setScene((n) => (n + 1) % scenes.length),
+      6500,
+    );
     return () => window.clearInterval(timer);
   }, [playing]);
   const active = scenes[scene];
@@ -254,11 +281,16 @@ function Hero({ onTour }: { onTour: () => void }) {
       }}
     >
       <div className="hero-copy">
-        <p className="eyebrow light">A SMALL ISLAND. AN EXTRAORDINARY JOURNEY.</p>
-        <h1>{active.title}</h1>
+        <p className="eyebrow light">
+          A SMALL ISLAND. AN EXTRAORDINARY JOURNEY.
+        </p>
+        <h1 style={{ fontSize: "clamp(58px, 6.1vw, 88px)", lineHeight: "0.99", letterSpacing: "-1.8px", margin: "24px 0", fontFamily: "Cormorant Garamond, serif", fontWeight: 500 }}>
+          Welcome to Sri Lanka.<br />
+          Personalized journeys with Grand P & B.
+        </h1>
         <p className="hero-intro">
-          From tea-covered hills to the Indian Ocean, discover the island with a journey
-          thoughtfully shaped around you.
+          From tea-covered hills to the Indian Ocean, discover the island with a
+          journey thoughtfully shaped around you.
         </p>
         <button className="button white" onClick={onTour}>
           Explore Tours <Arrow />
@@ -266,7 +298,7 @@ function Hero({ onTour }: { onTour: () => void }) {
       </div>
       <div className="hero-bottom">
         <p className="location">
-          <img src={`${A}/a439f.svg`} alt="" />
+          <img src={`${A}/location-pin.svg`} alt="" aria-hidden="true" />
           {active.location}
         </p>
         <div className="scene-nav">
@@ -283,11 +315,17 @@ function Hero({ onTour }: { onTour: () => void }) {
             </button>
           ))}
           <div className="slide-controls">
-            <button aria-label="Previous slide" onClick={() => setScene((scene + 4) % 5)}>
+            <button
+              aria-label="Previous slide"
+              onClick={() => setScene((scene + 4) % 5)}
+            >
               ‹
             </button>
             <span>0{scene + 1} / 05</span>
-            <button aria-label="Next slide" onClick={() => setScene((scene + 1) % 5)}>
+            <button
+              aria-label="Next slide"
+              onClick={() => setScene((scene + 1) % 5)}
+            >
               ›
             </button>
             <button
@@ -316,7 +354,10 @@ function Footer({ onView }: { onView: (v: View) => void }) {
       <div className="footer-grid">
         <div className="footer-brand">
           <Logo light />
-          <p>Meaningful journeys. A personal welcome. Discover Sri Lanka at your own pace.</p>
+          <p>
+            Meaningful journeys. A personal welcome. Discover Sri Lanka at your
+            own pace.
+          </p>
           <small>Registration No PV00290601</small>
         </div>
         <div>
@@ -344,20 +385,124 @@ function Footer({ onView }: { onView: (v: View) => void }) {
         </div>
       </div>
       <div className="legal">
-        <span>© 2026 Grand P & B. All rights reserved.</span>
-        <span>An island of possibilities. A journey that’s yours.</span>
+        <span>© 2026 Grand P & B. All rights reserved. · <a href="/privacy.html" target="_blank" rel="noopener" style={{ color: "inherit", textDecoration: "underline" }}>Privacy Policy</a></span>
+        <span>An island of possibilities. A journey that's yours.</span>
       </div>
     </footer>
   );
 }
 
+const WEB3FORMS_ACCESS_KEY = "afd50be9-b8a0-439e-993b-f1c87a69866b";
+
 function InquiryForm({ onComplete }: { onComplete: () => void }) {
   const [interests, setInterests] = useState(["Tea country"]);
-  const submit = (e: FormEvent) => {
-    e.preventDefault();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    country: "",
+    arrivalDate: "",
+    departureDate: "",
+    travellers: "2 adults · 0 children",
+    accommodation: "3-star-plus / 4-star",
+    journey: "Help me choose a tour",
+    additionalInfo: "",
+  });
+
+  const buildWhatsAppMessage = () => {
+    let message = "*New Travel Inquiry - Grand P & B*\n\n";
+    message += `*Name:* ${formData.name}\n`;
+    message += `*Email:* ${formData.email}\n`;
+    if (formData.phone) message += `*Phone:* ${formData.phone}\n`;
+    if (formData.country) message += `*Country:* ${formData.country}\n`;
+    message += `\n*Travel Details:*\n`;
+    if (formData.arrivalDate) message += `Arrival: ${formData.arrivalDate}\n`;
+    if (formData.departureDate) message += `Departure: ${formData.departureDate}\n`;
+    message += `Travellers: ${formData.travellers}\n`;
+    message += `Accommodation: ${formData.accommodation}\n`;
+    message += `\n*Tour Interest:* ${formData.journey}\n`;
+
+    if (interests.length > 0) {
+      message += `\n*Experiences:* ${interests.join(", ")}\n`;
+    }
+
+    if (formData.additionalInfo) {
+      message += `\n*Additional Information:*\n${formData.additionalInfo}`;
+    }
+
+    return message;
+  };
+
+  const sendViaWhatsApp = () => {
+    const whatsappNumber = "94716368412";
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(buildWhatsAppMessage())}`;
+    window.open(whatsappUrl, "_blank");
     onComplete();
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  const submit = async (e: FormEvent) => {
+    e.preventDefault();
+
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+
+    try {
+      // Prepare subject line
+      const arrivalText = formData.arrivalDate || "TBD";
+      const departureText = formData.departureDate || "TBD";
+      const subject = `New inquiry - ${formData.name} - ${arrivalText} to ${departureText}`;
+
+      // Prepare form data for Web3Forms
+      const payload = {
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: subject,
+        from_name: "Grand P & B Website",
+        email: "grandpnb@mail.com",
+        cc: "tours.grandpnb@gmail.com",
+        replyto: formData.email,
+        "Visitor Name": formData.name,
+        "Visitor Email": formData.email,
+        "Phone / WhatsApp": formData.phone || "Not provided",
+        "Country": formData.country || "Not specified",
+        "Arrival Date": formData.arrivalDate || "Not specified",
+        "Departure Date": formData.departureDate || "Not specified",
+        "Travellers": formData.travellers,
+        "Accommodation Preference": formData.accommodation,
+        "Tour Interest": formData.journey,
+        "Experiences": interests.join(", "),
+        "Additional Information": formData.additionalInfo || "No additional information provided",
+        botcheck: false,
+      };
+
+      // Send to Web3Forms
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        // Success - show confirmation
+        onComplete();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        // API returned error
+        alert("Sorry, we couldn't send your inquiry. Please try again or send it via WhatsApp");
+        setIsSubmitting(false);
+      }
+    } catch (error) {
+      // Network or other error
+      alert("Sorry, we couldn't send your inquiry. Please try again or send it via WhatsApp");
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <form className="inquiry-form" onSubmit={submit}>
       <div className="form-title">
@@ -366,21 +511,45 @@ function InquiryForm({ onComplete }: { onComplete: () => void }) {
       </div>
       <div className="form-grid">
         <label>
-          Full name *<input required placeholder="Your full name" />
+          Full name *
+          <input
+            required
+            placeholder="Your full name"
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          />
         </label>
         <label>
-          Email address *<input required type="email" placeholder="you@example.com" />
+          Email address *
+          <input
+            required
+            type="email"
+            placeholder="you@example.com"
+            value={formData.email}
+            onChange={(e) =>
+              setFormData({ ...formData, email: e.target.value })
+            }
+          />
         </label>
         <label>
           Phone / WhatsApp
-          <input placeholder="Country code + number" />
+          <input
+            placeholder="Country code + number"
+            value={formData.phone}
+            onChange={(e) =>
+              setFormData({ ...formData, phone: e.target.value })
+            }
+          />
         </label>
         <label>
           Country of residence
-          <select defaultValue="">
-            <option value="" disabled>
-              Select country
-            </option>
+          <select
+            value={formData.country}
+            onChange={(e) =>
+              setFormData({ ...formData, country: e.target.value })
+            }
+          >
+            <option value="">Select country</option>
             <option>United Kingdom</option>
             <option>Australia</option>
             <option>United States</option>
@@ -389,15 +558,32 @@ function InquiryForm({ onComplete }: { onComplete: () => void }) {
         </label>
         <label>
           Arrival date
-          <input type="date" />
+          <input
+            type="date"
+            value={formData.arrivalDate}
+            onChange={(e) =>
+              setFormData({ ...formData, arrivalDate: e.target.value })
+            }
+          />
         </label>
         <label>
           Departure date
-          <input type="date" />
+          <input
+            type="date"
+            value={formData.departureDate}
+            onChange={(e) =>
+              setFormData({ ...formData, departureDate: e.target.value })
+            }
+          />
         </label>
         <label>
           Travellers
-          <select>
+          <select
+            value={formData.travellers}
+            onChange={(e) =>
+              setFormData({ ...formData, travellers: e.target.value })
+            }
+          >
             <option>2 adults · 0 children</option>
             <option>1 adult</option>
             <option>Family</option>
@@ -405,7 +591,12 @@ function InquiryForm({ onComplete }: { onComplete: () => void }) {
         </label>
         <label>
           Accommodation preference
-          <select>
+          <select
+            value={formData.accommodation}
+            onChange={(e) =>
+              setFormData({ ...formData, accommodation: e.target.value })
+            }
+          >
             <option>3-star-plus / 4-star</option>
             <option>Boutique luxury</option>
             <option>Help me choose</option>
@@ -413,11 +604,18 @@ function InquiryForm({ onComplete }: { onComplete: () => void }) {
         </label>
       </div>
       <label>
-        Journey you’re interested in
-        <select>
+        Journey you're interested in
+        <select
+          value={formData.journey}
+          onChange={(e) =>
+            setFormData({ ...formData, journey: e.target.value })
+          }
+        >
           <option>Help me choose a tour</option>
           <option>A Week Discover in Sri Lanka</option>
           <option>Ceylon Flash</option>
+          <option>Leisure Sri Lanka</option>
+          <option>Sri Lanka at Leisure</option>
           <option>Discover Sri Lanka</option>
         </select>
       </label>
@@ -429,7 +627,9 @@ function InquiryForm({ onComplete }: { onComplete: () => void }) {
               type="button"
               className={interests.includes(x) ? "selected" : ""}
               onClick={() =>
-                setInterests((v) => (v.includes(x) ? v.filter((i) => i !== x) : [...v, x]))
+                setInterests((v) =>
+                  v.includes(x) ? v.filter((i) => i !== x) : [...v, x],
+                )
               }
               key={x}
             >
@@ -441,15 +641,32 @@ function InquiryForm({ onComplete }: { onComplete: () => void }) {
       </fieldset>
       <label>
         A little more about your trip
-        <textarea placeholder="Your preferred pace, special occasions, dietary needs or anything else we should know…" />
+        <textarea
+          placeholder="Your preferred pace, special occasions, dietary needs or anything else we should know…"
+          value={formData.additionalInfo}
+          onChange={(e) =>
+            setFormData({ ...formData, additionalInfo: e.target.value })
+          }
+        />
       </label>
       <label className="consent">
-        <input required type="checkbox" /> I’m happy for Grand P & B to contact me about this
-        inquiry.
+        <input required type="checkbox" /> I'm happy for Grand P & B to contact
+        me about this inquiry. By submitting, you agree to our{" "}
+        <a href="/privacy.html" target="_blank" rel="noopener" style={{ color: "var(--green)", textDecoration: "underline" }}>Privacy Policy</a>.
       </label>
-      <p className="form-note">An inquiry is not a booking. No payment required.</p>
-      <button className="button dark" type="submit">
-        Send my inquiry <Arrow />
+      <p className="form-note">
+        An inquiry is not a booking. No payment required.
+      </p>
+      <button className="button dark" type="submit" disabled={isSubmitting}>
+        {isSubmitting ? "Sending..." : "Send my inquiry"} {!isSubmitting && <Arrow />}
+      </button>
+      <button
+        type="button"
+        className="button outline"
+        onClick={sendViaWhatsApp}
+        style={{ marginTop: "12px" }}
+      >
+        Send via WhatsApp instead <Arrow />
       </button>
     </form>
   );
@@ -457,7 +674,8 @@ function InquiryForm({ onComplete }: { onComplete: () => void }) {
 
 function GuestCarousel() {
   const [photo, setPhoto] = useState(0);
-  const previous = () => setPhoto((photo + guestPhotos.length - 1) % guestPhotos.length);
+  const previous = () =>
+    setPhoto((photo + guestPhotos.length - 1) % guestPhotos.length);
   const next = () => setPhoto((photo + 1) % guestPhotos.length);
 
   return (
@@ -477,8 +695,8 @@ function GuestCarousel() {
           <h3>Journeys, shared with us.</h3>
         </div>
         <p>
-          A few warm welcomes and happy moments from guests who kindly gave us permission to share
-          their photographs.
+          A few warm welcomes and happy moments from guests who kindly gave us
+          permission to share their photographs.
         </p>
       </div>
       <div className="guest-carousel">
@@ -486,7 +704,7 @@ function GuestCarousel() {
           <img
             key={guestPhotos[photo]}
             src={`${A}/${guestPhotos[photo]}`}
-            alt={`Grand P & B guest memory ${photo + 1} of ${guestPhotos.length}`}
+            alt={`Travel memory shared by Grand P & B guests in Sri Lanka - photo ${photo + 1} of ${guestPhotos.length}`}
           />
         </div>
         <div className="guest-carousel-panel">
@@ -494,9 +712,15 @@ function GuestCarousel() {
             <span>{String(photo + 1).padStart(2, "0")}</span> /{" "}
             {String(guestPhotos.length).padStart(2, "0")}
           </p>
-          <p className="guest-quote">A personal welcome, and a moment to remember.</p>
+          <p className="guest-quote">
+            A personal welcome, and a moment to remember.
+          </p>
           <div className="guest-arrows">
-            <button type="button" onClick={previous} aria-label="Previous guest photo">
+            <button
+              type="button"
+              onClick={previous}
+              aria-label="Previous guest photo"
+            >
               ←
             </button>
             <button type="button" onClick={next} aria-label="Next guest photo">
@@ -527,11 +751,18 @@ function GuestCarousel() {
 function Home({ onView }: { onView: (v: View) => void }) {
   return (
     <>
+      <a href="#main-content" className="skip-to-main">
+        Skip to main content
+      </a>
       <Header onView={onView} current="home" />
       <Hero
-        onTour={() => document.getElementById("tours")?.scrollIntoView({ behavior: "smooth" })}
+        onTour={() =>
+          document
+            .getElementById("tours")
+            ?.scrollIntoView({ behavior: "smooth" })
+        }
       />
-      <section className="promises">
+      <section className="promises" id="main-content">
         <h3>Not just a destination. A feeling.</h3>
         <span>⌁ Thoughtfully planned</span>
         <span>⌾ Locally guided</span>
@@ -544,14 +775,19 @@ function Home({ onView }: { onView: (v: View) => void }) {
             <h2>Five ways to fall for Sri Lanka.</h2>
           </div>
           <p>
-            Choose your rhythm, from a fleeting escape to a deeper island discovery. We’ll help make
-            it yours.
+            Choose your rhythm, from a fleeting escape to a deeper island
+            discovery. We’ll help make it yours.
           </p>
         </div>
         <div className="tour-grid">
           {tours.map((tour, i) => (
             <article className="tour-card" key={tour[1]}>
-              <img src={tour[3]} alt="" style={{ height: "fit-content" }} />
+              <img
+                src={tour[3]}
+                alt={`${tour[1]} tour package itinerary`}
+                style={{ height: "fit-content" }}
+                loading="lazy"
+              />
               <div>
                 <b>{tour[0]}</b>
                 <h3>{tour[1]}</h3>
@@ -560,10 +796,13 @@ function Home({ onView }: { onView: (v: View) => void }) {
                   onClick={() =>
                     i === 1
                       ? (onView("tour"), window.scrollTo(0, 0))
-                      : document.getElementById("inquiry")?.scrollIntoView({ behavior: "smooth" })
+                      : document
+                          .getElementById("inquiry")
+                          ?.scrollIntoView({ behavior: "smooth" })
                   }
                 >
-                  {i === 1 ? "View 7-day itinerary" : "Explore this journey"} <Arrow />
+                  {i === 1 ? "View 7-day itinerary" : "Explore this journey"}{" "}
+                  <Arrow />
                 </button>
               </div>
             </article>
@@ -577,13 +816,15 @@ function Home({ onView }: { onView: (v: View) => void }) {
               Your kind of Sri Lanka.
             </h3>
             <p>
-              Have a different route in mind? Tell us what moves you, and let’s shape the details
-              together.
+              Have a different route in mind? Tell us what moves you, and let’s
+              shape the details together.
             </p>
             <button
               className="button outline"
               onClick={() =>
-                document.getElementById("inquiry")?.scrollIntoView({ behavior: "smooth" })
+                document
+                  .getElementById("inquiry")
+                  ?.scrollIntoView({ behavior: "smooth" })
               }
             >
               Create my journey <Arrow />
@@ -597,6 +838,7 @@ function Home({ onView }: { onView: (v: View) => void }) {
             src={mapImage}
             alt="Nine Arch Bridge in Ella"
             style={{ height: "540px", opacity: 0.7, objectFit: "contain" }}
+            loading="lazy"
           />
           <div>
             <span>NINE ARCH BRIDGE, ELLA</span>
@@ -610,13 +852,15 @@ function Home({ onView }: { onView: (v: View) => void }) {
             <br />A journey you’ll call yours.
           </h2>
           <p>
-            Grand P & B is a boutique Sri Lanka travel agency based in Weligalla. Our approach is
-            personal: listen to the way you like to travel, then bring the island’s landscapes,
-            culture and everyday moments together in a considered journey.
+            Grand P & B is a boutique Sri Lanka travel agency based in
+            Weligalla. Our approach is personal: listen to the way you like to
+            travel, then bring the island’s landscapes, culture and everyday
+            moments together in a considered journey.
           </p>
           <p>
-            From your first question to the finer details of your route, we believe good travel
-            begins with clear information and a warm conversation.
+            From your first question to the finer details of your route, we
+            believe good travel begins with clear information and a warm
+            conversation.
           </p>
           <a href="#inquiry">Get to know Grand P & B&nbsp; ↗</a>
         </div>
@@ -630,31 +874,46 @@ function Home({ onView }: { onView: (v: View) => void }) {
           </div>
           <p className="right-note">
             Destination inspiration
-            <br />
-            Client photographs coming soon
           </p>
         </div>
         <div className="gallery">
           {[
-            ["lasting-memories/ancient.webp", "01 / Ancient wonders"],
-            ["lasting-memories/waterfall.webp", "02 / Highland journeys"],
-            ["lasting-memories/beach.webp", "03 / Ocean days"],
-            ["lasting-memories/60591.webp", "04 / Tea country mornings"],
-          ].map(([img, label]) => (
+            [
+              "lasting-memories/ancient.webp",
+              "01 / Ancient wonders",
+              "Ancient temple ruins in Sri Lanka",
+            ],
+            [
+              "lasting-memories/waterfall.webp",
+              "02 / Highland journeys",
+              "Waterfall in Sri Lankan highlands",
+            ],
+            [
+              "lasting-memories/beach.webp",
+              "03 / Ocean days",
+              "Golden beach on Sri Lanka's southern coast",
+            ],
+            [
+              "lasting-memories/tea-country-morning.webp",
+              "04 / Tea country mornings",
+              "Tea plantations in the misty highlands",
+            ],
+          ].map(([img, label, altText]) => (
             <figure key={label}>
-              <img src={`${A}/${img}`} alt="" />
+              <img src={`${A}/${img}`} alt={altText} loading="lazy" />
               <figcaption>{label}</figcaption>
             </figure>
           ))}
         </div>
-        <blockquote>
+        <blockquote style={{ display: "none" }}>
           <span>TRAVELLER STORIES</span>
           <p>
-            “The kind of journey that gives you time to take it all in — and memories to take home.”
+            "The kind of journey that gives you time to take it all in — and
+            memories to take home."
           </p>
           <small>
-            Illustrative copy only, not a customer review. A genuine traveller story will appear
-            here with permission.
+            Illustrative copy only, not a customer review. A genuine traveller
+            story will appear here with permission.
           </small>
         </blockquote>
       </section>
@@ -669,8 +928,8 @@ function Home({ onView }: { onView: (v: View) => void }) {
             happen.
           </h2>
           <p>
-            A sunrise safari? A slow week by the sea? Tell us what you have in mind. We’ll help you
-            find your route and the right pace.
+            A sunrise safari? A slow week by the sea? Tell us what you have in
+            mind. We’ll help you find your route and the right pace.
           </p>
           <ol>
             <li>Share your travel ideas</li>
@@ -693,7 +952,10 @@ function Tour({ onView }: { onView: (v: View) => void }) {
   const inquire = () => {
     onView("home");
     window.setTimeout(
-      () => document.getElementById("inquiry")?.scrollIntoView({ behavior: "smooth" }),
+      () =>
+        document
+          .getElementById("inquiry")
+          ?.scrollIntoView({ behavior: "smooth" }),
       50,
     );
   };
@@ -706,15 +968,17 @@ function Tour({ onView }: { onView: (v: View) => void }) {
       </div>
       <section className="tour-hero">
         <div>
-          <p className="eyebrow light">THE HIGHLANDS, HERITAGE & SOUTHERN COAST</p>
-          <h1>
+          <p className="eyebrow light">
+            THE HIGHLANDS, HERITAGE & SOUTHERN COAST
+          </p>
+          <h2 style={{ fontSize: "76px", lineHeight: "1.08", letterSpacing: "-1px", margin: "18px 0", fontFamily: "Cormorant Garamond, serif", fontWeight: 500 }}>
             A Week Discover
             <br />
             in Sri Lanka
-          </h1>
+          </h2>
           <p>
-            Seven days of ancient wonders, tea-country mornings and coastal moments. One beautifully
-            varied island journey.
+            Seven days of ancient wonders, tea-country mornings and coastal
+            moments. One beautifully varied island journey.
           </p>
         </div>
         <b>6 Nights / 7 Days</b>
@@ -734,8 +998,9 @@ function Tour({ onView }: { onView: (v: View) => void }) {
             <p className="eyebrow">YOUR JOURNEY, DAY BY DAY</p>
             <h2>From a warm welcome to a fond farewell.</h2>
             <p>
-              Begin by the water in Negombo, trace the island’s cultural heart, then climb into tea
-              country before a safari and the southern coast. Here’s how your seven days unfold.
+              Begin by the water in Negombo, trace the island’s cultural heart,
+              then climb into tea country before a safari and the southern
+              coast. Here’s how your seven days unfold.
             </p>
           </div>
           {days.map((day, i) => (
@@ -753,7 +1018,8 @@ function Tour({ onView }: { onView: (v: View) => void }) {
                 </p>
                 {i === 0 && (
                   <aside>
-                    <b>OPTIONAL</b> Bicycle hire to explore the surrounding countryside.
+                    <b>OPTIONAL</b> Bicycle hire to explore the surrounding
+                    countryside.
                   </aside>
                 )}
                 <strong>▱ Overnight · {day[3]}</strong>
@@ -809,14 +1075,18 @@ function Tour({ onView }: { onView: (v: View) => void }) {
           <div className="contact-card">
             <h3>Have something in mind?</h3>
             <p>
-              Tell us your travel dates, accommodation preference and interests. Let's talk through
-              the details.
+              Tell us your travel dates, accommodation preference and interests.
+              Let's talk through the details.
             </p>
             <b>+94 71 636 8412</b>
             <span>grandpnb@mail.com</span>
           </div>
           <figure className="sidebar-photo">
-            <img src={`${A}/packages/8N9D.webp`} alt="" />
+            <img
+              src={`${A}/packages/8N9D.webp`}
+              alt="Leisure Sri Lanka tour itinerary - coastal relaxation"
+              loading="lazy"
+            />
             <figcaption>End with a little ocean air.</figcaption>
           </figure>
         </aside>
@@ -838,37 +1108,43 @@ function Tour({ onView }: { onView: (v: View) => void }) {
 function Confirmation({ onView }: { onView: (v: View) => void }) {
   return (
     <main className="confirmation">
-      <div className="notice">ⓘ &nbsp; DESIGN PREVIEW · NO REQUEST SENT</div>
       <div className="confirm-brand">
         <div className="logo-crop">
-          <img src={`${A}/logo/logo_transparent.webp`} alt="" />
+          <img
+            src={`${A}/logo/logo_transparent.webp`}
+            alt="Grand P & B Sri Lanka Travel"
+          />
         </div>
         <span>Grand P & B</span>
       </div>
       <section className="confirm-card">
         <div className="check">✓</div>
-        <p className="eyebrow">A JOURNEY BEGINS WITH AN IDEA</p>
-        <h1>
-          Your Sri Lanka
+        <p className="eyebrow">YOUR INQUIRY IS ON ITS WAY</p>
+        <h2 style={{ fontSize: "43px", lineHeight: "1.08", letterSpacing: "-1px", fontFamily: "Cormorant Garamond, serif", fontWeight: 500 }}>
+          Thank you for
           <br />
-          is one step closer.
-        </h1>
+          reaching out.
+        </h2>
         <p>
-          This is how an inquiry acknowledgement could look. Your travel ideas would be ready for a
-          personal conversation with our team.
+          Your travel inquiry has been sent successfully. Our team will review your details and get back to you shortly to start planning your Sri Lankan adventure.
         </p>
         <div className="summary">
-          <small>EXAMPLE INQUIRY</small>
-          <b>A Week Discover in Sri Lanka</b>
-          <span>6 Nights / 7 Days · 2 adults · Tea country</span>
+          <small>WHAT HAPPENS NEXT</small>
+          <p
+            style={{ fontSize: "14px", lineHeight: "1.7", margin: "12px 0 0" }}
+          >
+            • Our team will contact you within 24 hours
+            <br />
+            • We'll discuss your preferences and travel dates
+            <br />• You'll receive a personalized itinerary proposal
+          </p>
         </div>
         <button className="button outline" onClick={() => onView("home")}>
           Back to exploring <Arrow />
         </button>
       </section>
-      <small>
-        Static visual state only. No inquiry has been submitted, no booking has been made, and no
-        confirmation email has been sent.
+      <small style={{ color: "#69766f", marginTop: "24px" }}>
+        An inquiry is not a booking. No payment has been processed.
       </small>
     </main>
   );
@@ -890,7 +1166,9 @@ export default function App() {
     );
   const whatsappUrl =
     "https://wa.me/94716368412?text=" +
-    encodeURIComponent("Hello Grand P & B! I'm interested in planning a trip to Sri Lanka.");
+    encodeURIComponent(
+      "Hello Grand P & B! I'm interested in planning a trip to Sri Lanka.",
+    );
 
   return (
     <>

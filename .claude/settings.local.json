@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build)",
+      "Bash(curl -s \"https://d-direct.github.io/grandpnb/\")",
+      "Bash(curl -s \"https://d-direct.github.io/grandpnb/assets/index-CxE5nELu.js\")",
+      "Bash(git fetch origin)",
+      "Bash(cat src/App.tsx)",
+      "Bash(git add .github/workflows/deploy.yml)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nAdd proper caching to GitHub Actions workflow\n\nThis ensures the build uses the latest source code and properly\ncaches dependencies for faster builds.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push origin main)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nComplete cleanup: Remove all Figma dependencies\n\n- Simplify vite.config.ts to minimal React + Tailwind setup\n- Clean up index.html with proper meta tags\n- Remove all Figma plugins and complexity\n- Ensure proper /grandpnb/ base path for GitHub Pages\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(pnpm add -D sharp)",
+      "Bash(curl -s \"https://d-direct.github.io/grandpnb/\" -H \"Accept: text/html\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(git rm --cached public/assets/hero/*.webp public/assets/packages/*.webp public/assets/logo.jpeg imports/*.jpeg)",
+      "Bash(git add public/assets/**/*.webp public/assets/logo/ public/assets/welcome.jpg public/assets/lasting-memories/negambo.jpg)",
+      "Bash(npm install @fontsource/cormorant-garamond @fontsource/dm-sans)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

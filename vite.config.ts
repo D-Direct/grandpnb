@@ -5,11 +5,13 @@ import path from "node:path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/",
+  // GitHub Pages: https://d-direct.github.io/grandpnb/
+  // Custom Domain: https://grandpnb.com (base path will be "/" once custom domain is configured)
+  base: process.env.NODE_ENV === "production" ? "/grandpnb/" : "/",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@": path.resolve(import.meta.dirname, "./src"),
     },
   },
 });
