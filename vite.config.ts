@@ -5,9 +5,8 @@ import path from "node:path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  // GitHub Pages: https://d-direct.github.io/grandpnb/
-  // Custom Domain: https://grandpnb.com (base path will be "/" once custom domain is configured)
-  base: process.env.NODE_ENV === "production" ? "/grandpnb/" : "/",
+  // Custom Domain: https://grandpnb.com with CNAME
+  base: "/",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
