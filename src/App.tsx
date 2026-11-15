@@ -284,8 +284,18 @@ function Hero({ onTour }: { onTour: () => void }) {
         <p className="eyebrow light">
           A SMALL ISLAND. AN EXTRAORDINARY JOURNEY.
         </p>
-        <h1 style={{ fontSize: "clamp(58px, 6.1vw, 88px)", lineHeight: "0.99", letterSpacing: "-1.8px", margin: "24px 0", fontFamily: "Cormorant Garamond, serif", fontWeight: 500 }}>
-          Welcome to Sri Lanka.<br />
+        <h1
+          style={{
+            fontSize: "clamp(58px, 6.1vw, 88px)",
+            lineHeight: "0.99",
+            letterSpacing: "-1.8px",
+            margin: "24px 0",
+            fontFamily: "Cormorant Garamond, serif",
+            fontWeight: 500,
+          }}
+        >
+          Welcome to Sri Lanka.
+          <br />
           Personalized journeys with Grand P & B.
         </h1>
         <p className="hero-intro">
@@ -385,14 +395,24 @@ function Footer({ onView }: { onView: (v: View) => void }) {
         </div>
       </div>
       <div className="legal">
-        <span>© 2026 Grand P & B. All rights reserved. · <a href="/privacy.html" target="_blank" rel="noopener" style={{ color: "inherit", textDecoration: "underline" }}>Privacy Policy</a></span>
+        <span>
+          © 2026 Grand P & B. All rights reserved. ·{" "}
+          <a
+            href="/privacy.html"
+            target="_blank"
+            rel="noopener"
+            style={{ color: "inherit", textDecoration: "underline" }}
+          >
+            Privacy Policy
+          </a>
+        </span>
         <span>An island of possibilities. A journey that's yours.</span>
       </div>
     </footer>
   );
 }
 
-const WEB3FORMS_ACCESS_KEY = "afd50be9-b8a0-439e-993b-f1c87a69866b";
+const WEB3FORMS_ACCESS_KEY = "c565e337-4ed6-4194-81d0-f643a7c00776";
 
 function InquiryForm({ onComplete }: { onComplete: () => void }) {
   const [interests, setInterests] = useState(["Tea country"]);
@@ -418,7 +438,8 @@ function InquiryForm({ onComplete }: { onComplete: () => void }) {
     if (formData.country) message += `*Country:* ${formData.country}\n`;
     message += `\n*Travel Details:*\n`;
     if (formData.arrivalDate) message += `Arrival: ${formData.arrivalDate}\n`;
-    if (formData.departureDate) message += `Departure: ${formData.departureDate}\n`;
+    if (formData.departureDate)
+      message += `Departure: ${formData.departureDate}\n`;
     message += `Travellers: ${formData.travellers}\n`;
     message += `Accommodation: ${formData.accommodation}\n`;
     message += `\n*Tour Interest:* ${formData.journey}\n`;
@@ -465,14 +486,15 @@ function InquiryForm({ onComplete }: { onComplete: () => void }) {
         "Visitor Name": formData.name,
         "Visitor Email": formData.email,
         "Phone / WhatsApp": formData.phone || "Not provided",
-        "Country": formData.country || "Not specified",
+        Country: formData.country || "Not specified",
         "Arrival Date": formData.arrivalDate || "Not specified",
         "Departure Date": formData.departureDate || "Not specified",
-        "Travellers": formData.travellers,
+        Travellers: formData.travellers,
         "Accommodation Preference": formData.accommodation,
         "Tour Interest": formData.journey,
-        "Experiences": interests.join(", "),
-        "Additional Information": formData.additionalInfo || "No additional information provided",
+        Experiences: interests.join(", "),
+        "Additional Information":
+          formData.additionalInfo || "No additional information provided",
         botcheck: false,
       };
 
@@ -493,12 +515,16 @@ function InquiryForm({ onComplete }: { onComplete: () => void }) {
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         // API returned error
-        alert("Sorry, we couldn't send your inquiry. Please try again or send it via WhatsApp");
+        alert(
+          "Sorry, we couldn't send your inquiry. Please try again or send it via WhatsApp",
+        );
         setIsSubmitting(false);
       }
     } catch (error) {
       // Network or other error
-      alert("Sorry, we couldn't send your inquiry. Please try again or send it via WhatsApp");
+      alert(
+        "Sorry, we couldn't send your inquiry. Please try again or send it via WhatsApp",
+      );
       setIsSubmitting(false);
     }
   };
@@ -652,13 +678,22 @@ function InquiryForm({ onComplete }: { onComplete: () => void }) {
       <label className="consent">
         <input required type="checkbox" /> I'm happy for Grand P & B to contact
         me about this inquiry. By submitting, you agree to our{" "}
-        <a href="/privacy.html" target="_blank" rel="noopener" style={{ color: "var(--green)", textDecoration: "underline" }}>Privacy Policy</a>.
+        <a
+          href="/privacy.html"
+          target="_blank"
+          rel="noopener"
+          style={{ color: "var(--green)", textDecoration: "underline" }}
+        >
+          Privacy Policy
+        </a>
+        .
       </label>
       <p className="form-note">
         An inquiry is not a booking. No payment required.
       </p>
       <button className="button dark" type="submit" disabled={isSubmitting}>
-        {isSubmitting ? "Sending..." : "Send my inquiry"} {!isSubmitting && <Arrow />}
+        {isSubmitting ? "Sending..." : "Send my inquiry"}{" "}
+        {!isSubmitting && <Arrow />}
       </button>
       <button
         type="button"
@@ -872,9 +907,7 @@ function Home({ onView }: { onView: (v: View) => void }) {
             <p className="eyebrow">LITTLE MOMENTS, LASTING MEMORIES</p>
             <h2>An island worth looking closer at.</h2>
           </div>
-          <p className="right-note">
-            Destination inspiration
-          </p>
+          <p className="right-note">Destination inspiration</p>
         </div>
         <div className="gallery">
           {[
@@ -971,7 +1004,16 @@ function Tour({ onView }: { onView: (v: View) => void }) {
           <p className="eyebrow light">
             THE HIGHLANDS, HERITAGE & SOUTHERN COAST
           </p>
-          <h2 style={{ fontSize: "76px", lineHeight: "1.08", letterSpacing: "-1px", margin: "18px 0", fontFamily: "Cormorant Garamond, serif", fontWeight: 500 }}>
+          <h2
+            style={{
+              fontSize: "76px",
+              lineHeight: "1.08",
+              letterSpacing: "-1px",
+              margin: "18px 0",
+              fontFamily: "Cormorant Garamond, serif",
+              fontWeight: 500,
+            }}
+          >
             A Week Discover
             <br />
             in Sri Lanka
@@ -1120,13 +1162,23 @@ function Confirmation({ onView }: { onView: (v: View) => void }) {
       <section className="confirm-card">
         <div className="check">✓</div>
         <p className="eyebrow">YOUR INQUIRY IS ON ITS WAY</p>
-        <h2 style={{ fontSize: "43px", lineHeight: "1.08", letterSpacing: "-1px", fontFamily: "Cormorant Garamond, serif", fontWeight: 500 }}>
+        <h2
+          style={{
+            fontSize: "43px",
+            lineHeight: "1.08",
+            letterSpacing: "-1px",
+            fontFamily: "Cormorant Garamond, serif",
+            fontWeight: 500,
+          }}
+        >
           Thank you for
           <br />
           reaching out.
         </h2>
         <p>
-          Your travel inquiry has been sent successfully. Our team will review your details and get back to you shortly to start planning your Sri Lankan adventure.
+          Your travel inquiry has been sent successfully. Our team will review
+          your details and get back to you shortly to start planning your Sri
+          Lankan adventure.
         </p>
         <div className="summary">
           <small>WHAT HAPPENS NEXT</small>
